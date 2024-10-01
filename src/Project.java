@@ -1,9 +1,8 @@
 public class Project extends StudyActivities{
 
-    boolean bachelor;
 
-        public Project(String name, int ects, boolean basic, boolean bachelor){
-            super(name,ects,basic);
-            this.bachelor=bachelor;
+        public Project(String name, ActivityType activityType){
+            super(name,activityType);
+            this.ects=15;
         }
 }

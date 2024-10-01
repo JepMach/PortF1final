@@ -2,47 +2,25 @@ import java.util.ArrayList;
 
 public class SubjectModule {
 
-    String moduleName;
-    int courses;
-    int subjectCourseEcts;
-    int subjectProjectEcts;
-    ArrayList<String> courseName = new ArrayList<>();
-    ArrayList<String> electiveCourses = new ArrayList<>();
-    String projectName=null;
+    String subjectModuleName;
+    BachelorProgramme programme;
+    ArrayList<Course> courses = new ArrayList<>();
+    final Project[] projectName = new Project[1];
+    boolean moduleComplete;
 
-    public SubjectModule(String moduleName){
-      this.moduleName=moduleName;
+    public SubjectModule(StudyActivities.ActivityType subjectModuleName){
+      this.subjectModuleName=subjectModuleName.toString();
     }
 
-    public void addToModule(Course course){
+   public int getModuleECTS(){
+        int ECTSsum=0;
 
-            if (!courseName.contains(course.name)) {
-                if (!course.basic) {
-                    subjectCourseEcts = +course.ects;
-                    courses = +1;
-                    courseName.add(course.name);
-
-                    if (subjectCourseEcts >= 20) {
-                        electiveCourses.add(course.name);
-                    }
-
-                } else {
-                    System.out.println("Course is too basic");
-                }
-            } else {
-                System.out.println("The course is already part of the subject module");
-            }
-    }
-
-    public void addToModule(Project project){
-        if(!project.basic && projectName==null){
-            subjectProjectEcts=+project.ects;
-            projectName=project.name;
-
-        }else if(project.basic){
-            System.out.println("Project is too basic");
-        } else {
-            System.out.println("This subject module already has a project attached");
+        for(StudyActivities courseECTS: courses){
+            ECTSsum+=courseECTS.ects;
         }
-    }
+        if(!(projectName[0] ==null)){
+            ECTSsum+=15;
+        }
+        return ECTSsum;
+   }
 }

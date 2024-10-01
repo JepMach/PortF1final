@@ -1,12 +1,19 @@
 public abstract class StudyActivities {
+    public enum ActivityType {
+        Datalogi,
+        Informatik,
+        Basis,
+        GastronomiStudier,
+        GeoMichealGrafi,
+        Bachelor
+    }
     String name;
     int ects;
-    boolean basic;
+    ActivityType activityType;
 
-    public StudyActivities(String name, int ects, boolean basic){
+    public StudyActivities(String name, ActivityType activityType){
         this.name=name;
-        this.ects=ects;
-        this.basic=basic;
+        this.activityType = activityType;
 
     }
 }
